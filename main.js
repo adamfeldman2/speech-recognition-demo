@@ -48,7 +48,6 @@ function handleSpeechStart() {
   recognition.onspeechstart = function(event) {
     console.log('Speech recognition has started...');
   };
-
   handleSpeechStop();
 }
 
@@ -65,7 +64,7 @@ function handleSpeechResult() {
     handleStringOfSpeech(event.results[0][0].transcript);
     setTimeout(function() {
       handleSpeechStart();
-    }, 100);
+    }, 50);
   };
 }
 

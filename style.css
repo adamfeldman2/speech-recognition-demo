@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.screen-color {
+  font-size: 100px;
+  margin-bottom: 43px;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: white;
+  text-transform: uppercase;
+}
+
+.start-listening {
+  font-size: 17px;
+  background-color: #fff;
+  border: 2px solid #272727;
+  cursor: pointer;
+  padding: 10px 23px;
+  font-family: 'Montserrat', sans-serif;
+  outline: 0;
+}

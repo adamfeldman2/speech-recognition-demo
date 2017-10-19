@@ -1,6 +1,7 @@
 var colorText = document.querySelector('.screen-color');
-var startListeningButton = document.querySelector('.start-listening');
-var recordingIcon = document.querySelector('.recording');
+var button = document.querySelector('.button');
+var listening = document.querySelector('.listening');
+var isListening = true;
 var colors = [
   'aqua',
   'beige',
@@ -42,15 +43,31 @@ recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 3;
 
-startListeningButton.addEventListener('click', function() {
+function handleSpeechStart() {
   recognition.start();
-  recordingIcon.style.display = 'inline-block';
-});
+  recognition.onspeechstart = function(event) {
+    console.log('Speech recognition has started...');
+  };
 
-recognition.onresult = function(event) {
-  handleStringOfSpeech(event.results[0][0].transcript);
-  recordingIcon.style.display = 'none';
-};
+  handleSpeechStop();
+}
+
+function handleSpeechStop() {
+  recognition.onspeechend = function(event) {
+    recognition.stop();
+    handleSpeechResult();
+    console.log('Speech recognition has stopped!');
+  };
+}
+
+function handleSpeechResult() {
+  recognition.onresult = function(event) {
+    handleStringOfSpeech(event.results[0][0].transcript);
+    setTimeout(function() {
+      handleSpeechStart();
+    }, 100);
+  };
+}
 
 function handleStringOfSpeech(str) {
   var arr = str.split(' ');
@@ -62,9 +79,21 @@ function handleStringOfSpeech(str) {
       document.body.style.backgroundColor = colors[index];
     }
   }
-  updateColorText(colors[index]);
+  colorText.textContent = colors[index];
 }
 
-function updateColorText(color) {
-  colorText.textContent = color;
-}
+button.addEventListener('click', function() {
+  if (isListening) {
+    recognition.abort();
+    isListening = !isListening;
+    listening.style.visibility = 'hidden';
+    button.textContent = 'Okay, you can listen again';
+  } else {
+    handleSpeechStart();
+    isListening = !isListening;
+    listening.style.visibility = 'visible';
+    button.textContent = 'Stop Listening To Me, Creep!';
+  }
+});
+
+handleSpeechStart();

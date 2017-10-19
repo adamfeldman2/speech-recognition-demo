@@ -9,13 +9,20 @@ body {
 
 .screen-color {
   font-size: 100px;
-  margin-bottom: 43px;
+  margin-bottom: 10px;
   -webkit-text-stroke-width: 0.8px;
   -webkit-text-stroke-color: white;
   text-transform: uppercase;
 }
 
-.start-listening {
+.listening {
+  font-size: 24px;
+  color: orangered;
+  animation: blink 0.8s infinite;
+  margin-bottom: 20px;
+}
+
+.button {
   font-size: 17px;
   background-color: #fff;
   border: 2px solid #272727;
@@ -30,20 +37,12 @@ body {
   align-items: center;
 }
 
-.recording {
-  font-size: 20px;
-  color: orangered;
-  animation: blink 0.8s infinite;
-  margin-left: 4px;
-  display: none;
-}
-
 @media (max-width: 645px) {
   .screen-color {
     font-size: 80px;
   }
 
-  .start-listening {
+  .button {
     font-size: 16px;
     padding: 6px 16px;
   }
@@ -54,7 +53,7 @@ body {
     font-size: 65px;
   }
 
-  .start-listening {
+  .button {
     font-size: 15px;
     padding: 4px 14px;
   }
@@ -71,7 +70,7 @@ body {
     font-size: 48px;
   }
 
-  .start-listening {
+  .button {
     font-size: 15px;
     padding: 2px 10px;
   }

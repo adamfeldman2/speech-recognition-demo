@@ -20,7 +20,73 @@ body {
   background-color: #fff;
   border: 2px solid #272727;
   cursor: pointer;
-  padding: 10px 23px;
+  padding: 7px 22px;
+  line-height: 30px;
   font-family: 'Montserrat', sans-serif;
   outline: 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recording {
+  font-size: 20px;
+  color: orangered;
+  animation: blink 0.8s infinite;
+  margin-left: 4px;
+  display: none;
+}
+
+@media (max-width: 645px) {
+  .screen-color {
+    font-size: 80px;
+  }
+
+  .start-listening {
+    font-size: 16px;
+    padding: 6px 16px;
+  }
+}
+
+@media (max-width: 515px) {
+  .screen-color {
+    font-size: 65px;
+  }
+
+  .start-listening {
+    font-size: 15px;
+    padding: 4px 14px;
+  }
+}
+
+@media (max-width: 429px) {
+  .screen-color {
+    font-size: 55px;
+  }
+}
+
+@media (max-width: 356px) {
+  .screen-color {
+    font-size: 48px;
+  }
+
+  .start-listening {
+    font-size: 15px;
+    padding: 2px 10px;
+  }
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }

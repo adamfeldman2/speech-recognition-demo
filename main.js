@@ -1,5 +1,6 @@
 var colorText = document.querySelector('.screen-color');
 var startListeningButton = document.querySelector('.start-listening');
+var recordingIcon = document.querySelector('.recording');
 var colors = [
   'aqua',
   'beige',
@@ -43,10 +44,12 @@ recognition.maxAlternatives = 3;
 
 startListeningButton.addEventListener('click', function() {
   recognition.start();
+  recordingIcon.style.display = 'inline-block';
 });
 
 recognition.onresult = function(event) {
   handleStringOfSpeech(event.results[0][0].transcript);
+  recordingIcon.style.display = 'none';
 };
 
 function handleStringOfSpeech(str) {
